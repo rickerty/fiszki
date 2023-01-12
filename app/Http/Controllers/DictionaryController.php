@@ -15,7 +15,7 @@ class DictionaryController extends Controller
      */
     public function index()
     {
-        //
+        return view('dictionary');
     }
 
     /**
