@@ -1,22 +1,22 @@
 
-<div class="container-sm">
+<div class="container-md">
     
     
-        <div class="card border-0 bs-gray" >
+        <div class="d-sm-flex card border-0 bs-gray" >
             <div class="card-header bs-red">
                 Przetłumacz słowo: 
                     @if ($randomWord === 1)
                         <h2>{{ $question->polishWord }} </h2>
             </div>
                         <form wire:submit.prevent="checkAnswer({{ $question->id }}, 'pol')">
-                            <div class="m-3">
-                                <input class="form-control " type="text" wire:model.defer="answer" placeholder="Twoja odpowiedź">
+                            <div class="m-3 d-inline-flex">
+                                <input class="form-control" type="text" wire:model.defer="answer" placeholder="Twoja odpowiedź">
                             </div>
                     @else
                         <h2>{{ $question->englishWord }}</h2>
             </div>
                         <form wire:submit.prevent="checkAnswer({{ $question->id }}, 'eng')">
-                            <div class="m-3">
+                            <div class="m-3 d-inline-flex">
                                 <input class="form-control " type="text" wire:model.defer="answer" placeholder="Twoja odpowiedź">
                             </div>
                     @endif

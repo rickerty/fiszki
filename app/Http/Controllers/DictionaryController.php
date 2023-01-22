@@ -15,7 +15,8 @@ class DictionaryController extends Controller
      */
     public function index()
     {
-        return view('dictionary');
+        $words = Dictionary::all();
+        return view('livewire.dictionary')->with('words', $words);
     }
 
     /**
@@ -25,7 +26,7 @@ class DictionaryController extends Controller
      */
     public function create()
     {
-        //
+        return view('livewire.createword');
     }
 
     /**
@@ -36,7 +37,11 @@ class DictionaryController extends Controller
      */
     public function store(StoreDictionaryRequest $request)
     {
-        //
+        $input = $request->all();
+        Dictionary::create($input);
+        return redirect('words');
+        
+        
     }
 
     /**
@@ -45,9 +50,10 @@ class DictionaryController extends Controller
      * @param  \App\Models\Dictionary  $dictionary
      * @return \Illuminate\Http\Response
      */
-    public function show(Dictionary $dictionary)
+    public function show(Dictionary $word)
     {
-        //
+    
+        return view('show')->with('word', $word);
     }
 
     /**
@@ -56,9 +62,9 @@ class DictionaryController extends Controller
      * @param  \App\Models\Dictionary  $dictionary
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dictionary $dictionary)
+    public function edit(Dictionary $word)
     {
-        //
+        return view("edit")->with('word', $word);
     }
 
     /**
@@ -68,9 +74,12 @@ class DictionaryController extends Controller
      * @param  \App\Models\Dictionary  $dictionary
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDictionaryRequest $request, Dictionary $dictionary)
+    public function update(UpdateDictionaryRequest $request, $dictionary)
     {
-        //
+        
+        $input = Dictionary::find($dictionary);
+        $input->update($request->all());
+        return redirect('words');
     }
 
     /**
@@ -79,8 +88,9 @@ class DictionaryController extends Controller
      * @param  \App\Models\Dictionary  $dictionary
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dictionary $dictionary)
+    public function destroy($dictionary)
     {
-        //
+        Dictionary::destroy($dictionary);
+        return redirect('words');
     }
 }

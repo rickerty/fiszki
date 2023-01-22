@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\Fiszki;
+use App\Models\Dictionary;
 
 class Quiz extends Component
 {
@@ -17,7 +17,7 @@ class Quiz extends Component
     
     public function checkAnswer($questionId, $lang)
     {
-        $fiszek = Fiszki::find($questionId);
+        $fiszek = Dictionary::find($questionId);
             
             if ($lang == "pol"){
                 
@@ -45,18 +45,14 @@ class Quiz extends Component
                 }
             }
             $this->answer = "";
-            
-
-
-
-        
+          
     }
     
     public function render( )
     {
-        $lastNumber = Fiszki::orderBy('id', 'desc')->first()->id;
-        $randomId = rand(1, $lastNumber);
-        $question = Fiszki::where('id', $randomId)->first();
+        $allIds = Dictionary::where('id', '>', 0)->get('id')->toArray();
+        shuffle($allIds);
+        $question = Dictionary::where('id', $allIds[0])->first();
         $randomWord = rand(1, 2);
         return view('livewire.quiz', ["question" => $question, "randomWord" => $randomWord]);
     }

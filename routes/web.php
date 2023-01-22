@@ -20,6 +20,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/addword', [App\Http\Controllers\DictionaryController::class, 'index']);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+Route::resource('/words', DictionaryController::class);
+
 
