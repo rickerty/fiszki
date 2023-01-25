@@ -2,8 +2,8 @@
 <div class="container-md">
     
     
-        <div class="d-sm-flex card border-0 bs-gray" >
-            <div class="card-header bs-red">
+        <div class="d-sm-flex card border-0 text-light bs-green shadow-sm" >
+            <div class="card-header text-light bs-green shadow-sm">
                 Przetłumacz słowo: 
                     @if ($randomWord === 1)
                         <h2>{{ $question->polishWord }} </h2>
