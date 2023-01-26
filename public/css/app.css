@@ -90,6 +90,7 @@
 }
 
 body {
+
   margin: 0;
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
@@ -6804,9 +6805,9 @@ textarea.form-control-lg {
 }
 
 .sticky-bottom {
-  position: sticky;
   bottom: 0;
-  z-index: 1020;
+  width:100%;
+  position: relative;
 }
 
 @media (min-width: 576px) {

@@ -28,8 +28,8 @@ class Quiz extends Component
                 else
                 {
                     
-                    $goodAnswer = $fiszek->englishWord;
-                    session()->flash('message', 'Błędna odpowiedź. Prawidłowa odpowiedź to: '.$goodAnswer);
+                    
+                    session()->flash('message', 'Błędna odpowiedź. Prawidłowa odpowiedź to: '.$fiszek->polishWord.' - '.$fiszek->englishWord);
                     
                 }
             }
@@ -40,8 +40,8 @@ class Quiz extends Component
                 }
                 else
                 {
-                    $goodAnswer = $fiszek->polishWord;
-                    session()->flash('message', 'Błędna odpowiedź. Prawidłowa odpowiedź to: '.$goodAnswer);
+                    
+                    session()->flash('message', 'Błędna odpowiedź. Prawidłowa odpowiedź to: '.$fiszek->polishWord.' - '.$fiszek->englishWord);
                 }
             }
             $this->answer = "";
@@ -52,8 +52,9 @@ class Quiz extends Component
     {
         $allIds = Dictionary::where('id', '>', 0)->get('id')->toArray();
         shuffle($allIds);
+        $ilosc = Dictionary::all()->count();
         $question = Dictionary::where('id', $allIds[0])->first();
         $randomWord = rand(1, 2);
-        return view('livewire.quiz', ["question" => $question, "randomWord" => $randomWord]);
+        return view('livewire.quiz', ["question" => $question, "randomWord" => $randomWord, "ilosc"=>$ilosc]);
     }
 }

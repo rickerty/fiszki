@@ -2,6 +2,6 @@
 
 @section('content')
 <div class="container-fluid text-center ">
-    <livewire:quiz />
+    Witamy na stronie!
 </div>
 @endsection

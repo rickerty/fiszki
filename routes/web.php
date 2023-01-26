@@ -14,13 +14,12 @@ use App\Http\Controllers\DictionaryController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'start'])->middleware('auth');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+
 Route::resource('/words', DictionaryController::class);
 
 

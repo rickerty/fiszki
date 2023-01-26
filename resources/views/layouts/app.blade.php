@@ -79,6 +79,9 @@
                             <li class="nav-item">
                                 <a href="/words" class="nav-link text-light">Wykaz słów</a>
                             </li>
+                            <li class="nav-item">
+                                <a href="/home" class="nav-link text-light">Quiz</a>
+                            </li>
                         @endguest
                     </ul>
                 </div>
@@ -88,6 +91,10 @@
         <main class="py-4">
             @yield('content')
         </main>
+    </div>
+    <div class="sticky-bottom py-4 text-center text-white bs-green">
+        <div class="container"><small>Mamy już ... słówek</small></div>
+        <div class="container"><small>Copyright © Fiszki 2023</small></div>
     </div>
     @livewireScripts
 </body>
